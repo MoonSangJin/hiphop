@@ -9,7 +9,7 @@ interface Post {
 const posts: Post[] = [
   {
     id: 1,
-    title: '첫 번째 게시물',
+    title: '첫 번째 게시물 test',
     content: '안녕하세요, 첫 번째 게시물 내용입니다.',
   },
   {
