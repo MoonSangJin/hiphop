@@ -1,6 +1,6 @@
 export default function Navbar() {
   return (
-    <nav className='flex justify-around py-4 bg-white/80 backdrop-blur-md shadow-md w-full sticky top-0'>
+    <nav className='flex justify-around py-5 bg-white/80 backdrop-blur-md shadow-md w-full sticky top-0 z-10'>
       <div className='flex items-center'>
         <a
           href='/'
