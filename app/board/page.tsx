@@ -15,6 +15,7 @@ export default function Board() {
 
   useEffect(() => {
     axios.get<Post[]>('/api/posts').then((response) => {
+      console.log(response.data);
       setPosts(response.data);
     });
   }, []);
@@ -25,15 +26,20 @@ export default function Board() {
 
   return (
     <main>
-      <h2>게시판</h2>
+      <h2>게시판 글 목록</h2>
       <div>
         <ul>
           {posts.map((post) => (
             <li key={post.id}>
-              <Link href={`board/posts/${post.id}`}>{post.title}</Link>
+              <Link href={`board/posts/${post.id}`}>
+                {post.id} - {post.title} : {post.content}
+              </Link>
             </li>
           ))}
         </ul>
+        <button>
+          <Link href={`board/write`}>글쓰기</Link>
+        </button>
       </div>
     </main>
   );
