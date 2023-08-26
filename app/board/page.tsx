@@ -34,6 +34,9 @@ export default function Board() {
             </li>
           ))}
         </ul>
+        <button>
+          <Link href={`board/write`}>글쓰기</Link>
+        </button>
       </div>
     </main>
   );

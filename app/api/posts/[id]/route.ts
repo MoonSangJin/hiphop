@@ -20,7 +20,6 @@ const posts: Post[] = [
 ];
 
 export async function GET(request: NextRequest, context: any) {
-  console.log(request);
   const id = Number(context.params.id);
   const post = posts.find((p) => p.id === id);
   return NextResponse.json(post);
