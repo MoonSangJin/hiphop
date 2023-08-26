@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { convertToRaw, EditorState } from 'draft-js';
-import { useForm } from 'react-hook-form';
+import { FieldValues, useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import draftToHtml from 'draftjs-to-html';
 import dynamic from 'next/dynamic';
@@ -21,10 +21,11 @@ export default function Write() {
     formState: { errors },
   } = useForm();
 
-  const onEditorStateChange = (editorState) => setEditorState(editorState);
+  const onEditorStateChange = (editorState: SetStateAction<EditorState>) =>
+    setEditorState(editorState);
 
-  const submitForm = (formData: any) => {
-    formData.extraMessage = draftToHtml(
+  const submitForm = (formData: FieldValues) => {
+    formData.contents = draftToHtml(
       convertToRaw(editorState.getCurrentContent())
     );
     console.log(formData);
@@ -32,10 +33,19 @@ export default function Write() {
 
   return (
     <>
-      <form onSubmit={handleSubmit((formData) => submitForm(formData))}>
+      <form
+        className='w-1/2 m-auto'
+        onSubmit={handleSubmit((formData) => submitForm(formData))}
+      >
         <div>
-          <label htmlFor='title'>제목</label>
+          <label
+            className='text-2xl font-semibold'
+            htmlFor='title'
+          >
+            제목
+          </label>
           <input
+            className='block bg-gray-50 border border-gray-300 text-sm w-full p-2.5 mt-1.5 mb-5'
             {...register('title', {
               required: '❌ 제목은 필수 입력 사항입니다',
             })}
@@ -47,18 +57,21 @@ export default function Write() {
             name='title'
           />
         </div>
-        <h2>내용</h2>
+        <div className='text-xl font-semibold mb-1.5'>내용</div>
         <Editor
           // 초기값 설정
           editorState={editorState}
           // 에디터의 값이 변경될 때마다 onEditorStateChange 호출
           onEditorStateChange={onEditorStateChange}
+          // 에디터와 툴바 모두에 적용되는 클래스
+          wrapperClassName='bg-gray-50 border border-gray-300'
+          // 에디터 주변에 적용된 클래스
+          editorClassName='p-2.5'
           toolbar={{
             options: [
               'inline',
               'fontSize',
               'fontFamily',
-              'list',
               'textAlign',
               'link',
               'embedded',
@@ -66,7 +79,6 @@ export default function Write() {
               'image',
             ],
             inline: { inDropdown: true },
-            list: { inDropdown: true },
             textAlign: { inDropdown: true },
           }}
           // 한국어 설정
@@ -74,7 +86,6 @@ export default function Write() {
             locale: 'ko',
           }}
         />
-        <div>초기화</div>
         <button>submit</button>
       </form>
     </>

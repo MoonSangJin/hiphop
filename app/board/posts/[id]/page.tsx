@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 
 interface Post {
   title: string;
@@ -28,6 +29,9 @@ export default function PostDetail({ params }: { params: { id: string } }) {
     <div>
       <h1>{post.title}</h1>
       <p>{post.content}</p>
+      <button>
+        <Link href={'/board'}>뒤로가기</Link>
+      </button>
     </div>
   );
 }
