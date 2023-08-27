@@ -30,13 +30,12 @@ export default function SwiperContainer() {
       >
         {MOCK_THNUMBNAIL_DATA.map((i, index) => (
           <SwiperSlide key={index}>
-            <div className='w-full h-[700px]'>
+            <div className='w-full h-[630px]'>
               <Image
                 src={i}
                 alt={`Image ${index + 1}`}
                 fill={true}
               />
-              <div>제목</div>
             </div>
           </SwiperSlide>
         ))}
