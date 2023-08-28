@@ -7,10 +7,12 @@ export default function Home() {
     <main>
       <Swiper />
       <div className='container flex flex-col items-center mx-auto mt-9 space-y-9'>
-        <section className='w-full h-56 festivalInfo'>
-          <img
-            className='w-full h-full object-fill rounded-xl'
+        <section className='w-3/4 h-[7rem] lg:w-full lg:h-[15rem] relative'>
+          <Image
+            alt='festivalInfo'
+            fill={true}
             src='/festival.jpg'
+            className='rounded-xl'
           />
         </section>
         <section className='w-full flex flex-col items-center mt-5'>
