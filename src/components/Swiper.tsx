@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { MOCK_THNUMBNAIL_DATA } from '../(util)/mock';
+import { MOCK_THNUMBNAIL_DATA } from '../util/mock';
 import Image from 'next/image';
 
 export default function SwiperContainer() {
@@ -31,11 +31,7 @@ export default function SwiperContainer() {
         {MOCK_THNUMBNAIL_DATA.map((i, index) => (
           <SwiperSlide key={index}>
             <div className='w-full h-[630px]'>
-              <Image
-                src={i}
-                alt={`Image ${index + 1}`}
-                fill={true}
-              />
+              <Image src={i} alt={`Image ${index + 1}`} fill={true} />
             </div>
           </SwiperSlide>
         ))}

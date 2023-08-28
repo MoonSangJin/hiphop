@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
-import BoardTable from '../(components)/BoardTable';
+import BoardTable from '@/src/components/BoardTable';
 
 interface Post {
   id: number;

@@ -1,5 +1,5 @@
-import BoardTable from './(components)/BoardTable';
-import Swiper from './(components)/Swiper';
+import Swiper from '../components/Swiper';
+import BoardTable from '../components/BoardTable';
 import Image from 'next/image';
 
 export default function Home() {
