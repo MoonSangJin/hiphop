@@ -34,7 +34,7 @@ export default function Write() {
   return (
     <>
       <form
-        className='w-1/2 m-auto'
+        className='w-4/5 m-auto p-7'
         onSubmit={handleSubmit((formData) => submitForm(formData))}
       >
         <div>

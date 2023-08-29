@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import BoardTable from '@/src/components/BoardTable';
 
 interface Post {
   id: number;
@@ -25,7 +26,7 @@ export default function Board() {
   }
 
   return (
-    <main>
+    <>
       <h2>게시판 글 목록</h2>
       <div>
         <ul>
@@ -40,7 +41,8 @@ export default function Board() {
         <button>
           <Link href={`board/write`}>글쓰기</Link>
         </button>
+        <BoardTable />
       </div>
-    </main>
+    </>
   );
 }
