@@ -11,6 +11,7 @@ export default function Navbar() {
 
   return (
     <>
+      {/*----------------------------------------------------------PC NavBar---------------------------------------------------------- */}
       <div
         className={`transition-opacity duration-500 sticky top-0 z-10 ${
           mobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
@@ -112,7 +113,7 @@ export default function Navbar() {
           </div>
         </nav>
       </div>
-      {/*-----------------------Mobile NavBar------------------------------------ */}
+      {/*----------------------------------------------------------Mobile NavBar---------------------------------------------------------- */}
       <div
         className={`gnb_wrap block fixed top-0 left-0 right-0 bottom-0 z-20 py-16 bg-white transition-opacity duration-500 ${
           mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -135,41 +136,56 @@ export default function Navbar() {
           </svg>
         </button>
 
-        <nav id='gnb' className='gnb '>
-          <ul className='dep1'>
+        <nav id='gnb' className='gnb h-full'>
+          <ul className='flex flex-col items-center space-y-10 text-lg'>
             <li>
-              <a href='/ko/blog' className=''>
-                Blog
+              <a
+                href='/news'
+                className='font-semibold flex text-gray-600 hover:text-blue-500
+                    cursor-pointer transition-colors duration-300'
+              >
+                뉴스
               </a>
             </li>
             <li>
-              <a href='/ko/culture' className=''>
-                Culture
+              <a
+                href='/board'
+                className='font-semibold flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300'
+              >
+                커뮤니티
               </a>
             </li>
             <li>
-              <a href='/ko/opensource' className=''>
-                Open Source
+              <a
+                href='/video'
+                className='font-semibold flex text-gray-600 hover:text-blue-500
+                    cursor-pointer transition-colors duration-300'
+              >
+                비디오
               </a>
             </li>
             <li>
-              <a href='/ko/careers' className=''>
-                Careers
+              <a
+                href='/open_mic'
+                className='font-semibold flex text-gray-600 hover:text-blue-500
+                    cursor-pointer transition-colors duration-300'
+              >
+                오픈 마이크
+              </a>
+            </li>
+            <li>
+              <a
+                href='/introduce'
+                className='font-semibold flex text-gray-600 hover:text-blue-500
+                    cursor-pointer transition-colors duration-300'
+              >
+                About Us
               </a>
             </li>
           </ul>
         </nav>
-        <div className='right_area'>
-          <div className='language_list'>
-            <button
-              onClick={toggleMobileMenu}
-              type='button'
-              className='btn'
-              id='gnb-languages'
-            >
-              <i id='gnb-languages' className='lar la-earth'></i>한국어
-            </button>
-          </div>
+        <div className='footer text-center uppercase font-extrabold text-2xl'>
+          hiphopeat
         </div>
       </div>
     </>

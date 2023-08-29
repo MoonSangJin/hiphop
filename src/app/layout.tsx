@@ -17,8 +17,8 @@ export default function RootLayout({
       <body>
         <Navbar />
         {children}
-        <footer className='w-full bg-stone-900 text-white p-6 flex flex-col items-center space-y-3'>
-          <div className='font-extrabold text-2xl mb-2'>HIPHOPEAT</div>
+        <footer className='w-full bg-stone-900 text-white flex flex-col items-center space-y-3'>
+          <div className='font-extrabold text-2xl mb-2 pt-5'>HIPHOPEAT</div>
           <div className='flex'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -65,7 +65,9 @@ export default function RootLayout({
               />
             </svg>
           </div>
-          <div className='ml-auto font-semibold'>Powered by sangsang_jin</div>
+          <div className='ml-auto text-sm pr-3 py-3'>
+            Powered by sangsang_jin
+          </div>
         </footer>
       </body>
     </html>

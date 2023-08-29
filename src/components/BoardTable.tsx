@@ -1,6 +1,6 @@
 export default function BoardTable() {
   return (
-    <div className='bg-white pb-4 px-1.5 rounded-md w-full'>
+    <div className='bg-white pb-4 rounded-md w-full'>
       <div className='overflow-x-auto mt-6'>
         <table className='table-auto border-collapse w-full'>
           <thead>
