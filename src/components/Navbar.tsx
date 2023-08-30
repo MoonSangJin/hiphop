@@ -71,7 +71,7 @@ export default function Navbar() {
                 xmlns='http://www.w3.org/2000/svg'
                 viewBox='0 0 24 24'
                 fill='currentColor'
-                className='fill-current h-5 w-5 mr-2 mt-0.5'
+                className='fill-current h-5 w-5 md:mr-2 mr-1 mt-0.5'
               >
                 <path
                   fillRule='evenodd'
@@ -84,7 +84,7 @@ export default function Navbar() {
 
             <a className='flex text-gray-600 cursor-pointer transition-colors duration-300 font-semibold hover:text-blue-600'>
               <svg
-                className='fill-current h-5 w-5 mr-2 mt-0.5'
+                className='fill-current h-5 w-5 md:mr-2 mr-1 mt-0.5'
                 xmlns='http://www.w3.org/2000/svg'
                 version='1.1'
                 width='24'
@@ -98,10 +98,10 @@ export default function Navbar() {
             <div className='lg:hidden'>
               <button
                 onClick={toggleMobileMenu}
-                className='navbar-burger flex items-center text-blue-600 p-3'
+                className='navbar-burger flex items-center text-gray-600 p-2.5'
               >
                 <svg
-                  className='block h-4 w-4 fill-current'
+                  className='block w-4 h-4 fill-current'
                   viewBox='0 0 20 20'
                   xmlns='http://www.w3.org/2000/svg'
                 >
