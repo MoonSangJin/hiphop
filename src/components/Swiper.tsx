@@ -36,7 +36,7 @@ export default function SwiperContainer() {
                 alt={`Image ${index + 1}`}
                 fill={true}
                 placeholder='blur'
-                blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkj7hTDwADZQG83UBDHQAAAABJRU5ErkJggg=='
+                blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==' // 추가
               />
             </div>
           </SwiperSlide>

@@ -15,7 +15,7 @@ export default function Home() {
             src='/festival.jpg'
             className='rounded-xl'
             placeholder='blur'
-            blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkj7hTDwADZQG83UBDHQAAAABJRU5ErkJggg=='
+            blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==' // 추가
           />
         </section>
 
@@ -32,6 +32,8 @@ export default function Home() {
                         fill={true}
                         alt='latestImage'
                         className='rounded-t-xl'
+                        placeholder='blur'
+                        blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==' // 추가
                       />
                     </div>
                     <div className='overflow-hidden font-extrabold text-sm text-center w-full h-10 lg:h-14 px-1.5 mt-3'>
