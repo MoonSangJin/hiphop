@@ -8,7 +8,7 @@ export default function Home() {
     <main>
       <Swiper />
       <div className='container flex flex-col items-center mx-auto mt-9 space-y-9 px-5 lg:px-52'>
-        <section className='w-full h-[7rem] lg:h-[13rem] relative'>
+        <section className='w-full h-[7rem] md:h-[13rem] relative'>
           <Image
             alt='festivalInfo'
             fill={true}

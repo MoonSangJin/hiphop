@@ -9,6 +9,7 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { MOCK_THNUMBNAIL_DATA } from '../utils/mock';
 import Image from 'next/image';
+import '../utils/swiper.css';
 
 export default function SwiperContainer() {
   return (
