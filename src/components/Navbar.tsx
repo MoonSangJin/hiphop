@@ -1,12 +1,21 @@
 'use client';
 
 import { useState } from 'react';
+import { signIn } from 'next-auth/react';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const loginWithGoogle = async () => {
+    try {
+      await signIn('google');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -82,7 +91,10 @@ export default function Navbar() {
               검색
             </a>
 
-            <a className='flex text-gray-600 cursor-pointer transition-colors duration-300 font-semibold hover:text-blue-600'>
+            <a
+              onClick={loginWithGoogle}
+              className='flex text-gray-600 cursor-pointer transition-colors duration-300 font-semibold hover:text-blue-600'
+            >
               <svg
                 className='fill-current h-5 w-5 md:mr-2 mr-1 mt-0.5'
                 xmlns='http://www.w3.org/2000/svg'
