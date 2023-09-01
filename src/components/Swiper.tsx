@@ -31,11 +31,12 @@ export default function SwiperContainer() {
       >
         {MOCK_THNUMBNAIL_DATA.map((i, index) => (
           <SwiperSlide key={index}>
-            <div className='lg:w-full lg:h-[40rem] w-96 h-[10rem]'>
+            <div className='relative w-full h-[10rem] md:h-[30rem] lg:h-[40rem]'>
               <Image
                 src={i}
                 alt={`Image ${index + 1}`}
                 fill={true}
+                sizes='100%'
                 placeholder='blur'
                 blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==' // 추가
               />

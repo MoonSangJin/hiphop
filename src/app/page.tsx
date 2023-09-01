@@ -30,6 +30,7 @@ export default function Home() {
                       <Image
                         src={i.url}
                         fill={true}
+                        sizes='100%'
                         alt='latestImage'
                         className='rounded-t-xl'
                         placeholder='blur'
