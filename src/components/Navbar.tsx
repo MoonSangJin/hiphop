@@ -3,8 +3,13 @@
 import { useState, useEffect } from 'react';
 import Login from './Login';
 import { signOut } from 'next-auth/react';
+import { Session } from 'next-auth';
 
-export default function Navbar({ userInfo }) {
+interface UserInfo {
+  userInfo: Session | null;
+}
+
+export default function Navbar({ userInfo }: UserInfo) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [OAuthMenuOpen, setOAuthMenuOpen] = useState(false);
 
