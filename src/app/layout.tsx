@@ -1,26 +1,31 @@
 import './globals.css';
 import Navbar from '../components/Navbar';
-import type { Metadata } from 'next';
 import AuthSession from '../components/AuthSession';
+import type { Metadata } from 'next';
+import { getServerSession } from 'next-auth/next';
 
 export const metadata: Metadata = {
   title: 'HIPHOPEAT',
   description: '힙합과 R&B 커뮤니티',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const userInfo = await getServerSession();
+
   return (
     <html lang='en'>
       <body>
         <AuthSession>
-          <Navbar />
+          <Navbar {...{ userInfo }} />
           {children}
           <footer className='w-full bg-stone-900 text-white flex flex-col items-center space-y-3'>
-            <div className='font-extrabold text-2xl mb-2 pt-5'>HIPHOPEAT</div>
+            <div className='font-extrabold text-2xl mb-2 pt-5 uppercase'>
+              hiphopeat
+            </div>
             <div className='flex'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'

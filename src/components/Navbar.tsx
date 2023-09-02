@@ -1,25 +1,30 @@
 'use client';
 
-import { useState } from 'react';
-import { signIn } from 'next-auth/react';
+import { useState, useEffect } from 'react';
+import Login from './Login';
+import { signOut } from 'next-auth/react';
 
-export default function Navbar() {
+export default function Navbar({ userInfo }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [OAuthMenuOpen, setOAuthMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
-
-  const loginWithGoogle = async () => {
-    try {
-      await signIn('google');
-    } catch (error) {
-      console.error(error);
-    }
+  const toggleOAuthMenu = () => {
+    //로그아웃 상태이면 OAuthMenuOpen true, 로그인 상태면 OAuthMenuOpen false
+    setOAuthMenuOpen(!OAuthMenuOpen);
+  };
+  const preventEventBubbling = (e: { stopPropagation: () => void }) => {
+    // 이벤트 전파를 중지하여 검정색 화면 클릭만 toggleOAuthMenu가 호출되도록 합니다.
+    e.stopPropagation();
   };
 
   return (
     <>
+      {OAuthMenuOpen && (
+        <Login {...{ toggleOAuthMenu, preventEventBubbling }} />
+      )}
       {/*----------------------------------------------------------PC NavBar---------------------------------------------------------- */}
       <div
         className={`transition-opacity duration-500 sticky top-0 z-10 ${
@@ -29,8 +34,8 @@ export default function Navbar() {
         <nav className='flex justify-around py-5 bg-white/80 backdrop-blur-md shadow-md w-full'>
           <div className='flex items-center'>
             <a href='/' className='cursor-pointer'>
-              <h1 className='text-2xl font-extrabold text-blue-600'>
-                HIPHOPEAT
+              <h1 className='text-2xl font-extrabold text-blue-600 uppercase'>
+                hiphopeat
               </h1>
             </a>
           </div>
@@ -89,10 +94,11 @@ export default function Navbar() {
                 />
               </svg>
               검색
+              {userInfo?.user?.name}
             </a>
 
             <a
-              onClick={loginWithGoogle}
+              onClick={userInfo ? () => signOut() : () => toggleOAuthMenu()}
               className='flex text-gray-600 cursor-pointer transition-colors duration-300 font-semibold hover:text-blue-600'
             >
               <svg
@@ -105,7 +111,7 @@ export default function Navbar() {
               >
                 <path d='M10,17V14H3V10H10V7L15,12L10,17M10,2H19A2,2 0 0,1 21,4V20A2,2 0 0,1 19,22H10A2,2 0 0,1 8,20V18H10V20H19V4H10V6H8V4A2,2 0 0,1 10,2Z' />
               </svg>
-              Login
+              {userInfo ? <span>Logout</span> : <span>Login</span>}
             </a>
             <div className='lg:hidden'>
               <button
