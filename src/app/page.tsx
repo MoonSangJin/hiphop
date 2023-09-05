@@ -8,14 +8,14 @@ export default function Home() {
     <main>
       <Swiper />
       <div className='container flex flex-col items-center mx-auto mt-9 space-y-9 px-5 lg:px-52'>
-        <section className='w-full h-[7rem] lg:h-[13rem] relative'>
+        <section className='w-full h-[7rem] md:h-[13rem] relative'>
           <Image
             alt='festivalInfo'
             fill={true}
             src='/festival.jpg'
             className='rounded-xl'
             placeholder='blur'
-            blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkj7hTDwADZQG83UBDHQAAAABJRU5ErkJggg=='
+            blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==' // 추가
           />
         </section>
 
@@ -30,8 +30,11 @@ export default function Home() {
                       <Image
                         src={i.url}
                         fill={true}
+                        sizes='100%'
                         alt='latestImage'
                         className='rounded-t-xl'
+                        placeholder='blur'
+                        blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==' // 추가
                       />
                     </div>
                     <div className='overflow-hidden font-extrabold text-sm text-center w-full h-10 lg:h-14 px-1.5 mt-3'>
