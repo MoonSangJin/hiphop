@@ -26,7 +26,7 @@ export default function Home() {
               <li key={index} className='w-1/2 lg:w-1/3 p-1.5 mb-1.5'>
                 <a href={i.link}>
                   <div className='flex flex-col items-center border rounded-xl shadow-lg'>
-                    <div className='relative w-full h-24 lg:h-44'>
+                    <div className='relative w-full h-24 md:h-48 lg:h-52'>
                       <Image
                         src={i.url}
                         fill={true}

@@ -31,7 +31,7 @@ export default function SwiperContainer() {
       >
         {MOCK_THNUMBNAIL_DATA.map((i, index) => (
           <SwiperSlide key={index}>
-            <div className='relative w-full h-[10rem] md:h-[30rem] lg:h-[40rem]'>
+            <div className='relative w-full h-[22rem] md:h-[32rem] lg:h-[42rem]'>
               <Image
                 priority={true}
                 src={i}
@@ -40,6 +40,7 @@ export default function SwiperContainer() {
                 sizes='100%'
                 placeholder='blur'
                 blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==' // 추가
+                style={{ objectFit: 'cover' }}
               />
             </div>
           </SwiperSlide>
