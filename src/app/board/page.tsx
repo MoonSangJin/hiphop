@@ -17,12 +17,12 @@ export default function Board() {
   useEffect(() => {
     axios.get<Post[]>('/api/posts').then((response) => {
       console.log(response.data);
-      setPosts(response.data);
+      setPosts([...response.data]);
     });
   }, []);
 
   if (posts.length === 0) {
-    return <div>Loading...</div>;
+    return <div className='w-full h-max'>Loading...</div>;
   }
 
   return (
