@@ -33,6 +33,7 @@ export default function SwiperContainer() {
           <SwiperSlide key={index}>
             <div className='relative w-full h-[10rem] md:h-[30rem] lg:h-[40rem]'>
               <Image
+                priority={true}
                 src={i}
                 alt={`Image ${index + 1}`}
                 fill={true}
