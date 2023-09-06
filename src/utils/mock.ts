@@ -93,3 +93,78 @@ export const MOCK_LATEST_THNUMBNAIL_DATA = Object.freeze([
     link: 'https://hiphople.com/news_kr/25976119',
   },
 ]);
+
+export const MOCK_VIDEO_DATA = Object.freeze([
+  {
+    title: '[The Veteran] 지코, 스윙스, 그냥노창',
+    videoUrl: 'https://youtu.be/Xt_888NVSAY',
+    thumbNails:
+      'https://img.hiphople.com/files/thumbnails/011/980/025/360x180.crop.jpg?20230828175539',
+  },
+  {
+    title: '[Newsletter] NSW 윤',
+    videoUrl: 'https://www.youtube.com/watch?v=IUrGi5eVFF4&t=169s',
+    thumbNails:
+      'https://img.hiphople.com/files/thumbnails/775/932/025/360x180.crop.jpg?20230823175705',
+  },
+  {
+    title: '[슬라피 Freestyle] 신스, 애쉬비, 브린',
+    videoUrl: 'https://youtu.be/g1Os_hNVHdk',
+    thumbNails:
+      'https://img.hiphople.com/files/thumbnails/831/878/025/360x180.crop.jpg?20230817175723',
+  },
+  {
+    title: '[THE:RISE X RAPBEAT] 단체 싸이퍼',
+    videoUrl: 'https://youtu.be/7dS3kMjYWYE',
+    thumbNails:
+      'https://img.hiphople.com/files/thumbnails/605/824/025/360x180.crop.jpg?20230811175529',
+  },
+  {
+    title: '[THE:RISE X RAPBEAT] 유로겸',
+    videoUrl: 'https://youtu.be/pBgL6m4PXcg',
+    thumbNails:
+      'https://img.hiphople.com/files/thumbnails/133/814/025/360x180.crop.jpg?20230810175607',
+  },
+  {
+    title: '[THE:RISE X RAPBEAT] 유명한아이',
+    videoUrl: 'https://youtu.be/radzttPvs7s',
+    thumbNails:
+      'https://img.hiphople.com/files/thumbnails/437/803/025/360x180.crop.jpg?20230809175611',
+  },
+  {
+    title: '[THE:RISE X RAPBEAT] 노아주다',
+    videoUrl: 'https://www.youtube.com/watch?v=b5uqH0AlLRE',
+    thumbNails:
+      'https://img.hiphople.com/files/thumbnails/175/792/025/360x180.crop.jpg?20230808181051',
+  },
+  {
+    title: '[THE:RISE X RAPBEAT] 루시갱',
+    videoUrl: 'https://youtu.be/pFAt7n_fHHs',
+    thumbNails:
+      'https://img.hiphople.com/files/thumbnails/840/780/025/360x180.crop.jpg?20230807175946',
+  },
+  {
+    title: '[The Veteran] 지코, 스윙스, 그냥노창',
+    videoUrl: 'https://youtu.be/Xt_888NVSAY',
+    thumbNails:
+      'https://img.hiphople.com/files/thumbnails/011/980/025/360x180.crop.jpg?20230828175539',
+  },
+  {
+    title: '[The Veteran] 지코, 스윙스, 그냥노창',
+    videoUrl: 'https://youtu.be/Xt_888NVSAY',
+    thumbNails:
+      'https://img.hiphople.com/files/thumbnails/011/980/025/360x180.crop.jpg?20230828175539',
+  },
+  {
+    title: '[The Veteran] 지코, 스윙스, 그냥노창',
+    videoUrl: 'https://youtu.be/Xt_888NVSAY',
+    thumbNails:
+      'https://img.hiphople.com/files/thumbnails/011/980/025/360x180.crop.jpg?20230828175539',
+  },
+  {
+    title: '[The Veteran] 지코, 스윙스, 그냥노창',
+    videoUrl: 'https://youtu.be/Xt_888NVSAY',
+    thumbNails:
+      'https://img.hiphople.com/files/thumbnails/011/980/025/360x180.crop.jpg?20230828175539',
+  },
+]);
