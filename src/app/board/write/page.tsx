@@ -34,14 +34,11 @@ export default function Write() {
   return (
     <>
       <form
-        className='w-4/5 m-auto p-7'
+        className='w-full m-auto px-5 md:px-20 pt-7'
         onSubmit={handleSubmit((formData) => submitForm(formData))}
       >
         <div>
-          <label
-            className='text-2xl font-semibold'
-            htmlFor='title'
-          >
+          <label className='text-2xl font-semibold' htmlFor='title'>
             제목
           </label>
           <input
@@ -52,10 +49,7 @@ export default function Write() {
             type='text'
             id='title'
           />
-          <ErrorMessage
-            errors={errors}
-            name='title'
-          />
+          <ErrorMessage errors={errors} name='title' />
         </div>
         <div className='text-xl font-semibold mb-1.5'>내용</div>
         <Editor

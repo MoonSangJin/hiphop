@@ -38,6 +38,7 @@ export default function Login({
             >
               <div className='relative flex items-center space-x-3 justify-center'>
                 <Image
+                  priority={true}
                   src='https://www.svgrepo.com/show/475656/google-color.svg'
                   width={20}
                   height={20}

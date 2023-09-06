@@ -29,19 +29,10 @@ export default function Board() {
     <>
       <h2>게시판 글 목록</h2>
       <div>
-        <ul>
-          {posts.map((post) => (
-            <li key={post.id}>
-              <Link href={`board/posts/${post.id}`}>
-                {post.id} - {post.title} : {post.content}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <button>
+        <BoardTable />
+        <button className='bg-blue-400 float-right rounded w-20 m-2'>
           <Link href={`board/write`}>글쓰기</Link>
         </button>
-        <BoardTable />
       </div>
     </>
   );
