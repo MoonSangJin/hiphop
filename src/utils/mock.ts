@@ -1,9 +1,34 @@
-export const MOCK_THNUMBNAIL_DATA = Object.freeze([
-  'https://img.hiphople.com/files/attach/images/1987785/831/878/025/946e225977bd77bd73488d6352c7465c.jpg',
-  'https://img.hiphople.com/files/attach/images/115990/994/820/025/f9011b2322a83170c5da7cd08e8ba3d6.jpg',
-  'https://img.hiphople.com/files/attach/images/1987785/775/932/025/5edee13df3d5021e4d4f8b75a4030786.jpg',
-  'https://img.hiphople.com/files/attach/images/115990/385/949/025/f2969e37ae1d9d330bd939367e3a5b68.jpg',
-  'https://img.hiphople.com/files/attach/images/562/456/929/025/bf8f777e5949ea7c16073626eded9dc2.jpg',
+export const MOCK_SWIPER_DATA = Object.freeze([
+  {
+    url: 'https://img.hiphople.com/files/attach/images/562/772/085/026/98cd8e66eb589b8d83b1f6f824c6c8d2.jpg',
+    title: '디스가 난무하는 켄드릭 라마의 미공개 벌스',
+    category: '국외 뉴스',
+    link: 'https://hiphople.com/news_world/26085772',
+  },
+  {
+    url: 'https://img.hiphople.com/files/attach/images/115990/994/820/025/f9011b2322a83170c5da7cd08e8ba3d6.jpg',
+    title: 'ASIA의 사이 - 워디(Wxrdie)',
+    category: '국외 뉴스',
+    link: 'https://hiphople.com/music_feature/25820994',
+  },
+  {
+    url: 'https://img.hiphople.com/files/attach/images/1987785/775/932/025/5edee13df3d5021e4d4f8b75a4030786.jpg',
+    title: '저는 드릴 원툴이 아니에요 | [NEWSLETTER] NSW 윤',
+    category: '국외 뉴스',
+    link: 'https://www.youtube.com/watch?v=IUrGi5eVFF4&t=169s',
+  },
+  {
+    url: 'https://img.hiphople.com/files/attach/images/115990/385/949/025/f2969e37ae1d9d330bd939367e3a5b68.jpg',
+    title: 'UNHYPED: 에이상(AY SANG)',
+    category: '국외 뉴스',
+    link: 'https://hiphople.com/music_feature/25949385',
+  },
+  {
+    url: 'https://img.hiphople.com/files/attach/images/562/456/929/025/bf8f777e5949ea7c16073626eded9dc2.jpg',
+    title: '드레이크의 새 앨범에 프랭크 오션이?',
+    category: '국외 뉴스',
+    link: 'https://hiphople.com/news_world/25929456?page=4',
+  },
 ]);
 
 export const MOCK_LATEST_THNUMBNAIL_DATA = Object.freeze([
