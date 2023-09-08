@@ -19,6 +19,15 @@ const allPosts: Post[] = [
   },
 ];
 
+const wait = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(allPosts), 1500);
+  });
+};
+
 export async function GET() {
-  return NextResponse.json(allPosts);
+  console.log('get 요청 들어옴');
+  const data = await wait();
+  console.log(data);
+  return NextResponse.json(data);
 }
