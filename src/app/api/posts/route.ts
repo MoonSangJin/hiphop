@@ -26,8 +26,6 @@ const wait = () => {
 };
 
 export async function GET() {
-  console.log('get 요청 들어옴');
   const data = await wait();
-  console.log(data);
   return NextResponse.json(data);
 }
