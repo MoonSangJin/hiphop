@@ -7,6 +7,20 @@ import { getServerSession } from 'next-auth/next';
 export const metadata: Metadata = {
   title: 'HIPHOPEAT',
   description: '힙합과 R&B 커뮤니티',
+  openGraph: {
+    title: 'HIPHOPEAT',
+    description: '힙합과 R&B 커뮤니티',
+    url: 'https://hiphop-eight.vercel.app',
+    siteName: 'HIPHOPEAT',
+    images: {
+      url: '/logo.png',
+      width: 1800,
+      height: 1600,
+      alt: 'HIPHOPEAT Web',
+    },
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 
 export default async function RootLayout({
