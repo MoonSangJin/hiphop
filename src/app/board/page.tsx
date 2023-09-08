@@ -9,7 +9,7 @@ interface Post {
 }
 
 async function getData() {
-  const { data } = await axios.get<Post[]>('http://localhost:3000/api/posts');
+  const { data } = await axios.get<Post[]>(`${process.env.URL}/api/posts`);
   return data;
 }
 
