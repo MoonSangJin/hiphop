@@ -31,7 +31,7 @@ const Editor = dynamic(() => import('../../../components/QuillEditor'), {
 });
 
 export default function Write() {
-  const [editorValue, setEditorValue] = useState('');
+  const [editorValue, setEditorValue] = useState<string>('');
   const {
     register,
     handleSubmit,

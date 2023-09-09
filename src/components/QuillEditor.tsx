@@ -1,13 +1,21 @@
 'use client';
 
-import { useRef, useMemo } from 'react';
+import React, { useRef, useMemo } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import '@/src/utils/editor.css';
 import axios from 'axios';
 
-export default function QuillEditor({ editorValue, setEditorValue }) {
-  const quillRef = useRef(null);
+interface EditorType {
+  editorValue: string;
+  setEditorValue: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export default function QuillEditor({
+  editorValue,
+  setEditorValue,
+}: EditorType) {
+  const quillRef = useRef<ReactQuill | null>(null);
   const imageHandler = () => {
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
@@ -15,19 +23,27 @@ export default function QuillEditor({ editorValue, setEditorValue }) {
     input.click();
 
     input.addEventListener('change', async () => {
-      const file = input.files[0];
+      const file = input.files ? input.files[0] : null;
+      const editor = quillRef.current?.getEditor();
 
-      try {
-        const res = await axios.post(`${process.env.URL}/api/image/`, {
-          img: file,
-        });
-        const imgUrl = res.data.imgUrl;
-        const editor = quillRef.current.getEditor();
-        const range = editor.getSelection();
-        editor.insertEmbed(range.index, 'image', imgUrl);
-        editor.setSelection(range.index + 1);
-      } catch (error) {
-        console.log(error);
+      if (file && editor) {
+        try {
+          const res = await axios.post(`${process.env.URL}/api/image/`, {
+            img: file,
+          });
+          const imgUrl = res.data.imgUrl;
+
+          const range = editor.getSelection();
+          if (range) {
+            const position = range.index;
+            editor.clipboard.dangerouslyPasteHTML(
+              position,
+              `<img src="${imgUrl}" alt="Image" />`
+            );
+          }
+        } catch (error) {
+          console.log(error);
+        }
       }
     });
   };
