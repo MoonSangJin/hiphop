@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default function Video() {
   return (
     <main>
-      <div className='container flex flex-col mx-auto px-10 md:px-20 lg:px-52'>
+      <div className='container flex flex-col mx-auto px-5 md:px-20 lg:px-52'>
         <span className='uppercase text-center mt-10 font-semibold text-2xl'>
           new video
         </span>

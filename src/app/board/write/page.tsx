@@ -1,87 +1,81 @@
 'use client';
 
-import { SetStateAction, useState } from 'react';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { convertToRaw, EditorState } from 'draft-js';
+import { useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
-import draftToHtml from 'draftjs-to-html';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 
-const Editor = dynamic(
-  () => import('react-draft-wysiwyg').then((mod) => mod.Editor),
-  { ssr: false }
-);
+const Editor = dynamic(() => import('../../../components/QuillEditor'), {
+  ssr: false,
+  loading: () => (
+    <div role='status'>
+      <svg
+        aria-hidden='true'
+        className='w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600'
+        viewBox='0 0 100 101'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <path
+          d='M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z'
+          fill='currentColor'
+        />
+        <path
+          d='M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z'
+          fill='currentFill'
+        />
+      </svg>
+    </div>
+  ),
+});
 
 export default function Write() {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const [editorValue, setEditorValue] = useState('');
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onEditorStateChange = (editorState: SetStateAction<EditorState>) =>
-    setEditorState(editorState);
-
   const submitForm = (formData: FieldValues) => {
-    formData.contents = draftToHtml(
-      convertToRaw(editorState.getCurrentContent())
-    );
+    formData.contents = editorValue;
     console.log(formData);
   };
 
   return (
-    <>
-      <form
-        className='w-full m-auto px-5 md:px-20 pt-7'
-        onSubmit={handleSubmit((formData) => submitForm(formData))}
-      >
+    <main className='min-h-[80vh]'>
+      <form className=' w-full p-6'>
         <div>
           <label className='text-2xl font-semibold' htmlFor='title'>
             제목
           </label>
           <input
-            className='block bg-gray-50 border border-gray-300 text-sm w-full p-2.5 mt-1.5 mb-5'
+            className='block border border-gray-300 text-sm w-full p-2.5 mt-1.5 mb-2'
             {...register('title', {
-              required: '❌ 제목은 필수 입력 사항입니다',
+              required: true,
             })}
             type='text'
             id='title'
           />
           <ErrorMessage errors={errors} name='title' />
         </div>
-        <div className='text-xl font-semibold mb-1.5'>내용</div>
-        <Editor
-          // 초기값 설정
-          editorState={editorState}
-          // 에디터의 값이 변경될 때마다 onEditorStateChange 호출
-          onEditorStateChange={onEditorStateChange}
-          // 에디터와 툴바 모두에 적용되는 클래스
-          wrapperClassName='bg-gray-50 border border-gray-300'
-          // 에디터 주변에 적용된 클래스
-          editorClassName='p-2.5'
-          toolbar={{
-            options: [
-              'inline',
-              'fontSize',
-              'fontFamily',
-              'textAlign',
-              'link',
-              'embedded',
-              'emoji',
-              'image',
-            ],
-            inline: { inDropdown: true },
-            textAlign: { inDropdown: true },
-          }}
-          // 한국어 설정
-          localization={{
-            locale: 'ko',
-          }}
-        />
-        <button>submit</button>
+        <div className='text-xl font-semibold mt-5 mb-1.5'>내용</div>
+        <Editor {...{ editorValue, setEditorValue }} />
       </form>
-    </>
+      <div className='flex justify-center space-x-5'>
+        <Link href={'/board'}>
+          <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>
+            취소
+          </button>
+        </Link>
+        <button
+          onClick={handleSubmit((data) => submitForm(data))}
+          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+        >
+          등록
+        </button>
+      </div>
+    </main>
   );
 }

@@ -19,7 +19,7 @@ export default async function Board() {
     <main className='min-h-[80vh]'>
       <BoardTable />
       <button className='bg-blue-400 float-right rounded w-20 m-2'>
-        <Link href={`board/write`}>글쓰기</Link>
+        <Link href={'board/write'}>글쓰기</Link>
       </button>
     </main>
   );
