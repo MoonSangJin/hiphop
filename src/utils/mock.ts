@@ -14,13 +14,13 @@ export const MOCK_SWIPER_DATA = Object.freeze([
   {
     url: 'https://img.hiphople.com/files/attach/images/1987785/775/932/025/5edee13df3d5021e4d4f8b75a4030786.jpg',
     title: '저는 드릴 원툴이 아니에요 | [NEWSLETTER] NSW 윤',
-    category: '국외 뉴스',
+    category: '국내 뉴스',
     link: 'https://www.youtube.com/watch?v=IUrGi5eVFF4&t=169s',
   },
   {
     url: 'https://img.hiphople.com/files/attach/images/115990/385/949/025/f2969e37ae1d9d330bd939367e3a5b68.jpg',
     title: 'UNHYPED: 에이상(AY SANG)',
-    category: '국외 뉴스',
+    category: '국내 뉴스',
     link: 'https://hiphople.com/music_feature/25949385',
   },
   {

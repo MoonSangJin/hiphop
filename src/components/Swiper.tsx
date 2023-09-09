@@ -33,6 +33,9 @@ export default function SwiperContainer() {
           <SwiperSlide key={index}>
             <a href={i.link} target='_blank'>
               <div className='h-full absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black via-transparent to-transparent'>
+                <div className='absolute bottom-32 font-black text-blue-500 text-[1rem] md:text-[1.5rem]text-white pl-[1.5rem] md:pl-[5rem]'>
+                  {i.category}
+                </div>
                 <div className='truncate absolute bottom-14 font-black text-white text-[1.5rem] md:text-[2.5rem] max-w-sm md:max-w-full pl-[1.5rem] md:pl-[5rem]'>
                   {i.title}
                 </div>
