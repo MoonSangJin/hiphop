@@ -44,7 +44,7 @@ export default function Write() {
   };
 
   return (
-    <main className='min-h-[80vh]'>
+    <main className='min-h-[80vh] max-w-5xl mx-auto'>
       <form className=' w-full p-6'>
         <div>
           <label className='text-2xl font-semibold' htmlFor='title'>
