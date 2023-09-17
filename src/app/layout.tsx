@@ -28,6 +28,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  //서버에서 getServerSession을 통해 미리 확인을 해야 Navbar가 초기에 로그인 된 상태일 경우 login 버튼이 안나옴
   const userInfo = await getServerSession();
 
   return (

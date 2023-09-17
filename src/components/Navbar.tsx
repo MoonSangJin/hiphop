@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Login from './Login';
 import { signOut } from 'next-auth/react';
 import { Session } from 'next-auth';
+import Image from 'next/image';
 
 interface UserInfo {
   userInfo: Session | null;
@@ -36,7 +37,7 @@ export default function Navbar({ userInfo }: UserInfo) {
           mobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >
-        <nav className='flex justify-around py-5 bg-white/80 backdrop-blur-md shadow-md w-full'>
+        <nav className='px-4 flex justify-between md:justify-around py-5 bg-white/80 backdrop-blur-md shadow-md w-full'>
           <div className='flex items-center'>
             <a href='/' className='cursor-pointer'>
               <h1 className='text-2xl font-extrabold text-blue-600 uppercase'>
@@ -85,23 +86,19 @@ export default function Navbar({ userInfo }: UserInfo) {
             </a>
           </div>
           <div className='flex items-center space-x-5'>
-            <a className='flex text-gray-600 cursor-pointer transition-colors duration-300 font-semibold hover:text-blue-600'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 24 24'
-                fill='currentColor'
-                className='fill-current h-5 w-5 md:mr-2 mr-1 mt-0.5'
-              >
-                <path
-                  fillRule='evenodd'
-                  d='M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z'
-                  clipRule='evenodd'
+            <div className='hidden md:flex md:items-center '>
+              {userInfo && (
+                <Image
+                  src={userInfo.user.image}
+                  width={25}
+                  height={25}
+                  alt='userImage'
                 />
-              </svg>
-              검색
-              {userInfo?.user?.name}
-            </a>
-
+              )}
+              <span className='text-gray-700 font-bold md:ml-2'>
+                {userInfo?.user?.name}
+              </span>
+            </div>
             <a
               onClick={userInfo ? () => signOut() : () => toggleOAuthMenu()}
               className='flex text-gray-600 cursor-pointer transition-colors duration-300 font-semibold hover:text-blue-600'
