@@ -1,31 +1,30 @@
-import { NextResponse } from 'next/server';
+import { PrismaClient, Prisma } from '@prisma/client';
+import { NextRequest, NextResponse } from 'next/server';
 
-interface Post {
+export interface Post {
   id: number;
   title: string;
   content: string;
+  authorId: string;
+  comments: string | undefined;
 }
-
-const allPosts: Post[] = [
-  {
-    id: 1,
-    title: '첫 번째 게시물 제목',
-    content: '안녕하세요, 첫 번째 게시물 내용입니다.',
-  },
-  {
-    id: 2,
-    title: '두 번째 게시물 제목',
-    content: '안녕하세요, 두 번째 게시물 내용입니다.',
-  },
-];
+const prisma = new PrismaClient();
 
 const wait = () => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => resolve(allPosts), 1500);
+    setTimeout(() => resolve('hi'), 1500);
   });
 };
 
 export async function GET() {
-  const data = await wait();
-  return NextResponse.json(data);
+  const resultDB = await prisma.post.findMany();
+  return NextResponse.json(resultDB);
+}
+
+export async function POST(requset: NextRequest) {
+  console.log('post here');
+  await wait();
+  const requestData = await requset.json();
+  await prisma.post.create({ data: requestData });
+  return NextResponse.json('success post');
 }

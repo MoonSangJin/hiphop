@@ -1,10 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import axios from 'axios';
+import { Post } from '../../api/posts/route';
 
 const Editor = dynamic(() => import('../../../components/QuillEditor'), {
   ssr: false,
@@ -32,15 +36,37 @@ const Editor = dynamic(() => import('../../../components/QuillEditor'), {
 
 export default function Write() {
   const [editorValue, setEditorValue] = useState<string>('');
+  const router = useRouter();
+  const { data: sessionData } = useSession({
+    required: true,
+    onUnauthenticated() {
+      alert('로그인 이후에 작성할 수 있습니다.');
+      router.push('/');
+    },
+  });
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
-  const submitForm = (formData: FieldValues) => {
-    formData.contents = editorValue;
+  const resetForm = () => {
+    reset();
+    setEditorValue('');
+  };
+  const submitForm = async (formData: FieldValues) => {
+    //formData.name = sessionData?.user?.name;
+    formData.authorId = sessionData?.user?.email;
+    formData.content = editorValue;
     console.log(formData);
+    const { data } = await axios.post<Post>(
+      `${process.env.NEXT_PUBLIC_URL}/api/posts`,
+      formData
+    );
+    console.log(data);
+    resetForm();
+    router.push('/board');
   };
 
   return (
