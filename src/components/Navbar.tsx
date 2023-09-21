@@ -85,17 +85,18 @@ export default function Navbar({ userInfo }: UserInfo) {
               About Us
             </a>
           </div>
-          <div className='flex items-center space-x-5'>
-            <div className='hidden md:flex md:items-center '>
+          <div className='flex items-center space-x-3 md:space-x-4'>
+            <div className='md:flex md:items-center'>
               {userInfo && (
                 <Image
+                  className='rounded-2xl'
                   src={userInfo.user.image}
-                  width={25}
-                  height={25}
+                  width={27}
+                  height={27}
                   alt='userImage'
                 />
               )}
-              <span className='text-gray-700 font-bold md:ml-2'>
+              <span className='hidden md:block text-gray-700 font-bold md:ml-2'>
                 {userInfo?.user?.name}
               </span>
             </div>
