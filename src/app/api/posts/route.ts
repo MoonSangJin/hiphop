@@ -1,5 +1,5 @@
-import { PrismaClient, Prisma } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
+import prisma from '@/prisma/db';
 
 export interface Post {
   id: number;
@@ -8,8 +8,6 @@ export interface Post {
   authorId: string;
   comments: string | undefined;
 }
-const prisma = new PrismaClient();
-
 const wait = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => resolve('hi'), 1500);
