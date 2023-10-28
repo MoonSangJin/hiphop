@@ -193,3 +193,5 @@ export const MOCK_VIDEO_DATA = Object.freeze([
       'https://img.hiphople.com/files/thumbnails/011/980/025/360x180.crop.jpg?20230828175539',
   },
 ]);
+
+console.log('reload');
