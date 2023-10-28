@@ -6,26 +6,25 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
   @@index([userId])
@@ -49,6 +48,9 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  posts         Post[]
+  comments      Comment[]
+  replies       Reply[]
 }
 
 model VerificationToken {
@@ -57,4 +59,43 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Post {
+  id        String    @id @default(cuid())
+  title     String
+  content   String
+  authorId  String // 이 게시글을 작성한 사용자의 ID
+  author    User      @relation(fields: [authorId], references: [id])
+  comments  Comment[]
+  createdAt DateTime  @default(now())
+
+  @@index([authorId])
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  text      String
+  postId    String // 이 댓글이 속한 게시글의 ID
+  authorId  String // 이 댓글을 작성한 사용자의 ID
+  post      Post     @relation(fields: [postId], references: [id])
+  author    User     @relation(fields: [authorId], references: [id])
+  replies   Reply[]
+  createdAt DateTime @default(now())
+
+  @@index([postId])
+  @@index([authorId])
+}
+
+model Reply {
+  id        String   @id @default(cuid())
+  text      String
+  commentId String // 이 대댓글이 속한 댓글의 ID
+  authorId  String // 이 대댓글을 작성한 사용자의 ID
+  comment   Comment  @relation(fields: [commentId], references: [id])
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@index([commentId])
+  @@index([authorId])
 }
