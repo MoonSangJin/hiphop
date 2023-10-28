@@ -2,8 +2,17 @@ import Swiper from '../components/Swiper';
 import BoardTable from '../components/BoardTable';
 import Image from 'next/image';
 import { MOCK_LATEST_THNUMBNAIL_DATA } from '../utils/mock';
+import axios from 'axios';
+import { Post } from './api/posts/route';
 
-export default function Home() {
+const getPosts = async () => {
+  const { data } = await axios.get<Post[]>(
+    `${process.env.NEXT_PUBLIC_URL}/api/posts`
+  );
+  return data;
+};
+export default async function Home() {
+  const initialData = await getPosts();
   return (
     <main>
       <Swiper />
@@ -58,7 +67,7 @@ export default function Home() {
 
         <section className='w-full flex flex-col items-center'>
           <span className='font-semibold text-2xl uppercase'>communtiy</span>
-          <BoardTable />
+          <BoardTable {...{ initialData }} />
         </section>
       </div>
     </main>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import dynamic from 'next/dynamic';
