@@ -40,7 +40,7 @@ export default function SwiperContainer() {
                   {i.title}
                 </div>
               </div>
-              <div className='relative w-full h-[22rem] md:h-[32rem] lg:h-[42rem]'>
+              <div className='relative w-full h-[22rem] md:h-[32rem] lg:h-[52rem]'>
                 <Image
                   priority={true}
                   src={i.url}
